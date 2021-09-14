@@ -19,7 +19,7 @@ const Main = () => {
             <h1 className="text-6xl">Aaron Anantharajah</h1>
             <h2 className="text-3xl">Full-Stack Web Developer</h2>
           </div>
-          <Image src={Aaron} draggable="false" />
+          <Image src={Aaron} draggable="false" alt="Aaron Picture" />
         </div>
       </div>
       <svg
