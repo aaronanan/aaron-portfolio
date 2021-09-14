@@ -10,8 +10,8 @@ import About from "../components/About";
 export default function Home() {
   return (
     <div>
-      <Main />
-      <About />
+      {/* <Main />
+      <About /> */}
     </div>
 
     // <div className={styles.container}>
