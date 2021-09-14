@@ -2,9 +2,18 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
+//Components
+// import Navbar from "../components/Navbar";
+import Main from "../components/Main";
+import About from "../components/About";
+
 export default function Home() {
   return (
-    <div className="text-4xl">hello</div>
+    <div>
+      <Main />
+      <About />
+    </div>
+
     // <div className={styles.container}>
     //   <Head>
     //     <title>Create Next App</title>
