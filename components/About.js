@@ -55,14 +55,15 @@ const About = () => {
         </p>
         <div className="flex flex-row flex-wrap w-2/3 justify-between mt-20 mx-auto">
           {skills.map((skill, index) => (
-            <div className="mx-10 mb-12 relative">
-              <Image src={Circle} width={110} draggable={false} />
+            <div key={index} className="mx-10 mb-12 relative">
+              <Image src={Circle} width={110} draggable={false} alt="cricle" />
               <div className="absolute left-6 top-9 pl-0.5">
                 <Image
                   src={skillsIcon[index]}
                   width={60}
                   height={60}
                   draggable={false}
+                  alt={skill}
                 />
               </div>
               <p className="text-center text-xl -mt-3">{skill}</p>
