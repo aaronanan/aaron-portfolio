@@ -1,19 +1,20 @@
 import React from "react";
 import Image from "next/image";
 import LayeredWave from "../assets/layered-waves.svg";
+import { IoLogoLinkedin, IoLogoGithub, IoMailOutline } from "react-icons/io5";
 
 const Contact = () => {
   return (
     <div className="-mt-2">
       <h3 className="text-5xl text-center uppercase">Contact</h3>
-      <p className="w-1/4 mx-auto text-center text-xl">
+      <p className="w-1/3 mx-auto text-center text-2xl mt-8">
         I love to chat about new opportunities as well as my past and current
         work! Feel free to message me on LinkedIn or send me an email.
       </p>
-      <div className="flex-row flex justify-center items-center">
-        <div className="w-14 h-14 bg-gray-400 mx-5" />
-        <div className="w-14 h-14 bg-gray-400 mx-5" />
-        <div className="w-14 h-14 bg-gray-400 mx-5" />
+      <div className="flex-row flex justify-center items-center mt-7">
+        <IoLogoLinkedin size={45} color="grey" className="mx-3" />
+        <IoLogoGithub size={45} color="grey" className="mx-3" />
+        <IoMailOutline size={45} color="grey" className="mx-3" />
       </div>
       {/* <Image src={LayeredWave} width={500} height={200} /> */}
       <footer className="relative">
@@ -47,7 +48,7 @@ const Contact = () => {
             fill="#255977"
           ></path>
         </svg>
-        <p className="absolute bottom-0 left-1/2 transform -translate-x-1/2 text-white">
+        <p className="absolute bottom-3 left-1/2 transform -translate-x-1/2 text-white text-xs">
           COPYRIGHT @2021 AARON ANANTHARAJAH. ALL RIGHTS RESERVED.
         </p>
       </footer>

@@ -16,7 +16,10 @@ const Main = () => {
         <div className="flex flex-row justify-between items-center py-20 mt-10">
           <div className="uppercase">
             <p className="text-2xl">Hi there, I'm</p>
-            <h1 className="text-6xl">Aaron Anantharajah</h1>
+            <h1 className="text-6xl">
+              Aaron <br />
+              Anantharajah
+            </h1>
             <h2 className="text-3xl">Full-Stack Web Developer</h2>
           </div>
           <Image src={Aaron} draggable="false" alt="Aaron Picture" />
