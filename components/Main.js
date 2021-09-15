@@ -10,8 +10,8 @@ import Aaron from "../assets/avataaars.svg";
 
 const Main = () => {
   return (
-    <div className="bg-gray-400">
-      <div className="mx-44">
+    <div className="bg-bgBlue">
+      <div className="mx-80">
         <Navbar />
         <div className="flex flex-row justify-between items-center py-20 mt-10">
           <div className="uppercase">
@@ -22,7 +22,13 @@ const Main = () => {
             </h1>
             <h2 className="text-3xl">Full-Stack Web Developer</h2>
           </div>
-          <Image src={Aaron} draggable="false" alt="Aaron Picture" />
+          <Image
+            src={Aaron}
+            draggable="false"
+            alt="Aaron Picture"
+            width={500}
+            height={500}
+          />
         </div>
       </div>
       <svg

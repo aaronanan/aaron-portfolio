@@ -45,7 +45,7 @@ const About = () => {
     <div>
       <div className="mx-44">
         <h3 className="text-center text-5xl uppercase">About Me</h3>
-        <p className="w-1/2 text-lg mx-auto mt-10">
+        <p className="w-1/2 text-2xl mx-auto mt-10">
           Hello! My name is Aaron and I am a full-stack developer based in
           Vancouver, Canada. I have 5+ years of experience developing various
           projects and products for companies with focus on fast, elegant and
