@@ -11,26 +11,39 @@ import Aaron from "../assets/avataaars.svg";
 const Main = () => {
   return (
     <div className="bg-bgBlue">
-      <div className="2xl:mx-60 lg:mx-40 md:mx-32">
+      <div className="2xl:mx-60 xl:mx-40 lg:mx-24 md:mx-12 mx-6">
         <Navbar />
-        <div className="flex flex-row justify-between items-center py-20 mt-10">
-          <div className="uppercase">
-            <p className="text-2xl text-gold font-medium">Hi there, I'm</p>
-            <h1 className="lg:text-6xl text-xl text-white font-bold mt-5">
+        <div className="flex md:flex-row flex-col justify-between items-center py-20 mt-10">
+          <div className="uppercase md:text-left text-center">
+            <p className="lg:text-2xl text-xl text-gold font-medium">
+              Hi there, I'm
+            </p>
+            <h1 className="lg:text-6xl sm:text-5xl text-4xl text-white font-bold mt-5">
               Aaron <br />
               Anantharajah
             </h1>
-            <h2 className="text-3xl text-gold font-bold mt-5">
+            <h2 className="lg:text-3xl text-2xl text-gold font-bold mt-5">
               Full-Stack Web Developer
             </h2>
           </div>
-          {/* <Image
-            src={Aaron}
-            draggable="false"
-            alt="Aaron Picture"
-            width={400}
-            height={400}
-          /> */}
+          <div className="block md:hidden">
+            <Image
+              src={Aaron}
+              draggable="false"
+              alt="Aaron Picture"
+              width={300}
+              height={380}
+            />
+          </div>
+          <div className="hidden md:block">
+            <Image
+              src={Aaron}
+              draggable="false"
+              alt="Aaron Picture"
+              width={400}
+              height={400}
+            />
+          </div>
         </div>
       </div>
       <svg

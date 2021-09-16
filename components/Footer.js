@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Footer = () => {
+  const year = new Date().getFullYear();
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+  });
+
+  useEffect(() => {
+    setWidth(window.innerWidth);
+  }, []);
+
   return (
     <footer className="relative">
       <svg
@@ -9,7 +23,9 @@ const Footer = () => {
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
         className="w-full -mt-48"
-        height="600"
+        height={
+          width > 1280 ? 600 : width > 768 ? 500 : width > 639 ? 400 : 300
+        }
         preserveAspectRatio="none"
       >
         <path
@@ -33,8 +49,8 @@ const Footer = () => {
           fill="#255977"
         ></path>
       </svg>
-      <p className="absolute bottom-3 left-1/2 transform -translate-x-1/2 text-white text-xs font-semibold leading-relaxed">
-        COPYRIGHT @2021 AARON ANANTHARAJAH. ALL RIGHTS RESERVED.
+      <p className="absolute bottom-3 left-1/2 transform -translate-x-1/2 text-white text-xs font-semibold w-auto">
+        COPYRIGHT @{year} AARON A{width > 640 && "NTHARAJAH"}.
       </p>
     </footer>
   );

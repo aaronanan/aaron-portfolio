@@ -13,24 +13,26 @@ import { IoCodeSlash, IoEye } from "react-icons/io5";
 
 const Projects = () => {
   const [width, setWidth] = useState(0);
-  const [height, setHeight] = useState(0);
 
   useEffect(() => {
     function handleResize() {
       setWidth(window.innerWidth);
-      setHeight(window.innerHeight);
     }
     window.addEventListener("resize", handleResize);
   });
 
+  useEffect(() => {
+    setWidth(window.innerWidth);
+  }, []);
+
   const BottomButtons = () => {
     return (
-      <div className="flex flex-row mt-6 xl:space-x-10 md:space-x-8 space-x-4">
-        <button className="xl:w-40 md:w-36 sm:w-32 xl:h-12 md:h-10 sm:h-8 xl:text-lg lg:text-md md:text-sm text-xs bg-gold rounded-xl font-bold flex flex-row items-center justify-center uppercase">
+      <div className="flex flex-row sm:justify-start justify-center mt-6 xl:space-x-10 md:space-x-8 space-x-4">
+        <button className="xl:w-40 md:w-36 sm:w-32 xl:h-12 md:h-10 sm:h-8 w-28 h-9 xl:text-lg lg:text-md md:text-sm text-xs bg-gold rounded-xl font-bold flex flex-row items-center justify-center uppercase">
           <IoEye size={width > 768 ? 24 : 20} className="mr-1" />
           Demo
         </button>
-        <button className="xl:w-40 md:w-36 sm:w-32 xl:h-12 md:h-10 sm:h-8 xl:text-lg lg:text-md md:text-sm text-xs rounded-xl font-bold flex flex-row items-center justify-center bg-white uppercase">
+        <button className="xl:w-40 md:w-36 sm:w-32 xl:h-12 md:h-10 sm:h-8 w-28 h-9 xl:text-lg lg:text-md md:text-sm text-xs rounded-xl font-bold flex flex-row items-center justify-center bg-white uppercase">
           <IoCodeSlash size={width > 768 ? 24 : 20} className="mr-1" />
           Code
         </button>
@@ -74,13 +76,13 @@ const Projects = () => {
   ];
 
   return (
-    <div className="bg-bgBlue -mt-2">
-      <h3 className="lg:text-5xl md:text-4xl text-2xl text-center uppercase font-bold text-white">
+    <div className="bg-bgBlue pt-14">
+      <h3 className="lg:text-5xl md:text-4xl text-3xl text-center uppercase font-bold text-white">
         <span className="text-gold">P</span>rojects
       </h3>
       {projectsInfo.map((project, index) => (
         <div className="">
-          <div className="flex flex-row items-center justify-center mt-20 lg:space-x-20 md:space-x-7 space-x-5">
+          <div className="flex sm:flex-row flex-col items-center justify-center mt-20 lg:space-x-20 md:space-x-7 space-x-5">
             {project.image.length == 1 ? (
               <Image
                 src={project.image[0]}
@@ -158,11 +160,11 @@ const Projects = () => {
                 </div>
               </div>
             )}
-            <div className="lg:w-1/3 w-1/2">
-              <h4 className="2xl:text-4xl xl:text-3xl md:text-2xl text-xl uppercase text-white font-bold">
+            <div className="lg:w-1/3 sm:w-1/2 w-4/5 sm:mt-0 mt-10">
+              <h4 className="2xl:text-4xl xl:text-3xl text-2xl uppercase text-white font-bold sm:text-left text-center">
                 {project.name}
               </h4>
-              <p className="2xl:text-xl xl:text-lg lg:text-md text-white mt-5">
+              <p className="2xl:text-xl xl:text-lg lg:text-md text-white mt-5 sm:text-left text-center">
                 {project.desc}
               </p>
               <BottomButtons />

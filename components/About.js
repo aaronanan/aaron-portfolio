@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 //Images
@@ -15,9 +15,6 @@ import AWSIcon from "../assets/aws-2.svg";
 import ReactNative from "../assets/react-native-1.svg";
 
 const About = () => {
-  const skillsRow1 = ["HTML", "CSS", "TailwindCSS", "Javascript", "Python"];
-  const skillsRow2 = ["Node", "React", "NextJS", "AWS", "React Native"];
-
   const skillsIcon = [
     HTMLIcon,
     CSSIcon,
@@ -31,13 +28,33 @@ const About = () => {
     ReactNative,
   ];
 
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+  });
+  useEffect(() => {
+    setWidth(window.innerWidth);
+  }, []);
+  var skillsRow1;
+  var skillsRow2;
+  width > 640
+    ? (skillsRow1 = ["HTML", "CSS", "TailwindCSS", "Javascript", "Python"])
+    : (skillsRow1 = ["HTML", "CSS", "Tailwind", "Javascript", "Python"]);
+  width > 640
+    ? (skillsRow2 = ["Node", "React", "NextJS", "AWS", "React Native"])
+    : (skillsRow2 = ["Node", "React", "NextJS", "AWS", "R-Native"]);
+
   return (
     <div>
-      <div className="">
-        <h3 className="text-center text-5xl uppercase font-bold text-bgBlue">
+      <div className="mb-20 mt-10">
+        <h3 className="text-center lg:text-5xl sm:text-4xl text-3xl uppercase font-bold text-bgBlue">
           About <span className="text-gold">Me</span>
         </h3>
-        <p className="w-1/2 text-2xl mx-auto mt-10 text-bgBlue font-medium">
+        <p className="2xl:w-3/5 md:w-3/4 lg:text-2xl sm:text-xl text-base mx-5 md:mx-auto sm:mt-10 mt-5 text-bgBlue font-medium text-center">
           Hello! My name is Aaron and I am a full-stack developer based in
           Vancouver, Canada. I have 5+ years of experience developing various
           projects and products for companies with focus on fast, elegant and
@@ -45,39 +62,74 @@ const About = () => {
           technologies I enjoy playing basketball, hiking and spending quality
           time with family.
         </p>
-        <div className="flex flex-row flex-wrap justify-center mt-20 2xl:space-x-20 xl:space-x-18 lg:space-x-16 md:space-x-10">
+        <div className="flex flex-row flex-wrap justify-center lg:mt-20 sm:mt-12 mt-4 2xl:space-x-20 xl:space-x-18 lg:space-x-16 md:space-x-10 sm:space-x-6 space-x-3">
           {skillsRow1.map((skill, index) => (
             <div key={index} className="relative">
-              <Image src={Circle} width={110} draggable={false} alt="cricle" />
-              <div className="absolute left-6 top-9 pl-0.5">
+              <Image
+                src={Circle}
+                width={
+                  width > 1024
+                    ? 110
+                    : width > 768
+                    ? 100
+                    : width > 639
+                    ? 90
+                    : width > 0 && 56
+                }
+                // width={width > 1024 ? 110 : 100}
+                draggable={false}
+                alt="cricle"
+              />
+              <div className="absolute xl:left-6 xl:top-9 lg:left-6 lg:top-9 md:top-10 sm:left-6 sm:top-12 top-12 left-3 pl-0.5">
                 <Image
                   src={skillsIcon[index]}
-                  width={60}
-                  height={60}
+                  width={
+                    width > 1024 ? 60 : width > 768 ? 50 : width > 639 ? 40 : 30
+                  }
+                  height={
+                    width > 1024 ? 60 : width > 768 ? 50 : width > 639 ? 40 : 30
+                  }
                   draggable={false}
                   alt={skill}
                 />
               </div>
-              <p className="text-center text-lg -mt-3 uppercase font-semibold">
+              <p className="text-center xl:text-lg lg:text-base sm:text-sm text-xs sm:-mt-3 -mt-9 uppercase font-semibold">
                 {skill}
               </p>
             </div>
           ))}
         </div>
-        <div className="flex flex-row flex-wrap justify-center mt-8 2xl:space-x-20 xl:space-x-18 lg:space-x-16 md:space-x-10">
+        <div className="flex flex-row flex-wrap justify-center lg:mt-8 sm:mt-4 mt-0 2xl:space-x-20 xl:space-x-18 lg:space-x-16 md:space-x-10 sm:space-x-6 space-x-3">
           {skillsRow2.map((skill, index) => (
             <div key={index} className="relative">
-              <Image src={Circle} width={110} draggable={false} alt="cricle" />
-              <div className="absolute left-6 top-9 pl-0.5">
+              <Image
+                src={Circle}
+                width={
+                  width > 1024
+                    ? 110
+                    : width > 768
+                    ? 100
+                    : width > 639
+                    ? 90
+                    : width > 0 && 56
+                }
+                draggable={false}
+                alt="cricle"
+              />
+              <div className="absolute xl:left-6 xl:top-9 lg:left-6 lg:top-9 md:top-10 sm:left-6 sm:top-12 top-12 left-3 pl-0.5">
                 <Image
                   src={skillsIcon[index + 5]}
-                  width={60}
-                  height={60}
+                  width={
+                    width > 1024 ? 60 : width > 768 ? 50 : width > 639 ? 40 : 30
+                  }
+                  height={
+                    width > 1024 ? 60 : width > 768 ? 50 : width > 639 ? 40 : 30
+                  }
                   draggable={false}
                   alt={skill}
                 />
               </div>
-              <p className="text-center text-lg -mt-3 uppercase font-medium">
+              <p className="text-center xl:text-lg lg:text-base sm:text-sm text-xs sm:-mt-3 -mt-9 uppercase font-semibold">
                 {skill}
               </p>
             </div>
@@ -87,7 +139,7 @@ const About = () => {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 320"
-        className="transform rotate-180"
+        className="transform rotate-180 translate-y-1"
         // style={{ transform: "scaleX(-1) rotate(180deg)" }}
       >
         <path
