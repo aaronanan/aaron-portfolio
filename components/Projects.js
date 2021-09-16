@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 //Images
@@ -8,75 +8,172 @@ import CryptoCoin1 from "../assets/cryptocoin.jpg";
 import CryptoCoin2 from "../assets/cryptocoin2.jpg";
 import Dansljardin from "../assets/dansljardin.png";
 
-const BottomButtons = () => {
-  return (
-    <div className="flex flex-row mt-5">
-      <input type="button" value="Demo" className="w-40 h-10 text-2xl mr-10" />
-      <input type="button" value="Code" className="w-40 h-10 text-2xl" />
-    </div>
-  );
-};
+//Icons
+import { IoCodeSlash, IoEye } from "react-icons/io5";
 
 const Projects = () => {
+  const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+      setHeight(window.innerHeight);
+    }
+    window.addEventListener("resize", handleResize);
+  });
+
+  const BottomButtons = () => {
+    return (
+      <div className="flex flex-row mt-6 xl:space-x-10 md:space-x-8 space-x-4">
+        <button className="xl:w-40 md:w-36 sm:w-32 xl:h-12 md:h-10 sm:h-8 xl:text-lg lg:text-md md:text-sm text-xs bg-gold rounded-xl font-bold flex flex-row items-center justify-center uppercase">
+          <IoEye size={width > 768 ? 24 : 20} className="mr-1" />
+          Demo
+        </button>
+        <button className="xl:w-40 md:w-36 sm:w-32 xl:h-12 md:h-10 sm:h-8 xl:text-lg lg:text-md md:text-sm text-xs rounded-xl font-bold flex flex-row items-center justify-center bg-white uppercase">
+          <IoCodeSlash size={width > 768 ? 24 : 20} className="mr-1" />
+          Code
+        </button>
+      </div>
+    );
+  };
+
+  const projectsInfo = [
+    {
+      name: "Movie Cloud",
+      desc: "A web application that allows you to search for movies updated using an existing API. It displays the latest movies alongside a description, catergory and rating.",
+      flip: true,
+      image: [MovieCloud],
+      width: 300,
+      height: width > 1280 ? 510 : width > 1024 ? 410 : 370,
+    },
+    {
+      name: "Dans L'Jardin",
+      desc: "A full-stack web application that connects clients with local musicans. Musicians can register by filling out a survey and sending a demo tape of their perferred instrument. Once registered, an admin decides to allow or reject the musican. Clients can then book amusician to play live music!",
+      flip: true,
+      image: [Dansljardin],
+      width: 500,
+      height: 330,
+    },
+    {
+      name: "Crypto Coin App",
+      desc: "A react native application that displays the latest prices and trends of coins. In this app, you are able to buy and sell coins as a means to replicate the coin market.",
+      flip: true,
+      image: [CryptoCoin1, CryptoCoin2],
+      width: 200,
+      height: 540,
+    },
+    {
+      name: "Builtspace",
+      desc: "An industry sponsored project which took their manual process of inserting excel sheet data and converting it into a web application to accelerate their business process.",
+      flip: true,
+      image: [BuiltSpace],
+      width: 420,
+      height: 360,
+    },
+  ];
+
   return (
-    <div className="bg-gray-400 -mt-2">
-      <h3 className="text-5xl text-center uppercase">Projects</h3>
+    <div className="bg-bgBlue -mt-2">
+      <h3 className="lg:text-5xl md:text-4xl text-2xl text-center uppercase font-bold text-white">
+        <span className="text-gold">P</span>rojects
+      </h3>
       {projectsInfo.map((project, index) => (
-        <>
-          {project.flip ? (
-            <div className="mx-44 flex flex-row items-center justify-evenly mt-20">
+        <div className="">
+          <div className="flex flex-row items-center justify-center mt-20 lg:space-x-20 md:space-x-7 space-x-5">
+            {project.image.length == 1 ? (
               <Image
                 src={project.image[0]}
-                width={project.width}
-                height={project.height}
+                width={
+                  width >= 1536
+                    ? 500
+                    : width >= 1280
+                    ? 420
+                    : width >= 768
+                    ? 320
+                    : width > 0 && 250
+                }
+                height={
+                  width >= 1536
+                    ? project.height
+                    : width >= 1280
+                    ? project.height - 30
+                    : width >= 768
+                    ? project.height - 40
+                    : width > 0 && project.height - 120
+                }
+                quality={30}
+                onClick={() => console.log(width)}
               />
-
-              <div className="w-1/3">
-                <h4 className="text-4xl uppercase">{project.name}</h4>
-                <p className="text-xl">{project.desc}</p>
-                <BottomButtons />
-              </div>
-            </div>
-          ) : (
-            <div className="mx-44 flex flex-row items-center justify-evenly mt-20">
-              <div className="w-1/3">
-                <h4 className="text-4xl uppercase">{project.name}</h4>
-                <p className="text-xl">{project.desc}</p>
-                <BottomButtons />
-              </div>
-
-              {project.image.length == 1 ? (
-                <Image
-                  src={project.image[0]}
-                  width={project.width}
-                  height={project.height}
-                />
-              ) : (
-                <div className="flex-row flex">
-                  <div className="mr-3">
-                    <Image
-                      src={project.image[0]}
-                      width={project.width}
-                      height={project.height}
-                    />
-                  </div>
-                  <div>
-                    <Image
-                      src={project.image[1]}
-                      width={project.width}
-                      height={project.height}
-                    />
-                  </div>
+            ) : (
+              // MORE THAN ONE PICTURE
+              <div className="flex-row flex">
+                <div className="mr-2">
+                  <Image
+                    src={project.image[0]}
+                    quality={30}
+                    width={
+                      width >= 1536
+                        ? 245
+                        : width >= 1280
+                        ? 205
+                        : width >= 768
+                        ? 155
+                        : width > 0 && 120
+                    }
+                    height={
+                      width >= 1536
+                        ? project.height
+                        : width >= 1280
+                        ? project.height - 120
+                        : width >= 768
+                        ? project.height - 150
+                        : width > 0 && project.height - 260
+                    }
+                  />
                 </div>
-              )}
+                <div>
+                  <Image
+                    src={project.image[1]}
+                    quality={30}
+                    width={
+                      width >= 1536
+                        ? 245
+                        : width >= 1280
+                        ? 205
+                        : width >= 768
+                        ? 155
+                        : width > 0 && 120
+                    }
+                    height={
+                      width >= 1536
+                        ? project.height
+                        : width >= 1280
+                        ? project.height - 120
+                        : width >= 768
+                        ? project.height - 150
+                        : width > 0 && project.height - 260
+                    }
+                  />
+                </div>
+              </div>
+            )}
+            <div className="lg:w-1/3 w-1/2">
+              <h4 className="2xl:text-4xl xl:text-3xl md:text-2xl text-xl uppercase text-white font-bold">
+                {project.name}
+              </h4>
+              <p className="2xl:text-xl xl:text-lg lg:text-md text-white mt-5">
+                {project.desc}
+              </p>
+              <BottomButtons />
             </div>
-          )}
-        </>
+          </div>
+        </div>
       ))}
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1440 320"
-        className="transform rotate-180"
+        viewBox="0 0 1440 321"
+        className="transform rotate-180 translate-y-1"
       >
         <path
           fill="white"
@@ -87,40 +184,5 @@ const Projects = () => {
     </div>
   );
 };
-
-const projectsInfo = [
-  {
-    name: "Movie Cloud",
-    desc: "A web application that allows you to search for movies updated using an existing API. It displays the latest movies alongside a description, catergory and rating.",
-    flip: false,
-    image: [MovieCloud],
-    width: 300,
-    height: 330,
-  },
-  {
-    name: "Dans L'Jardin",
-    desc: "A full-stack web application that connects clients with local musicans. Musicians can register by filling out a survey and sending a demo tape of their perferred instrument. Once registered, an admin decides to allow or reject the musican. Clients can then book amusician to play live music!",
-    flip: true,
-    image: [Dansljardin],
-    width: 500,
-    height: 330,
-  },
-  {
-    name: "Crypto Coin App",
-    desc: "A react native application that displays the latest prices and trends of coins. In this app, you are able to buy and sell coins as a means to replicate the coin market.",
-    flip: false,
-    image: [CryptoCoin1, CryptoCoin2],
-    width: 200,
-    height: 440,
-  },
-  {
-    name: "Builtspace",
-    desc: "An industry sponsored project which took their manual process of inserting excel sheet data and converting it into a web application to accelerate their business process.",
-    flip: true,
-    image: [BuiltSpace],
-    width: 420,
-    height: 300,
-  },
-];
 
 export default Projects;
