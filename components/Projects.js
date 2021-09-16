@@ -48,6 +48,7 @@ const Projects = () => {
       image: [MovieCloud],
       width: 300,
       height: width > 1280 ? 510 : width > 1024 ? 410 : 370,
+      alt: "A Web App called Movie Cloud",
     },
     {
       name: "Dans L'Jardin",
@@ -56,6 +57,7 @@ const Projects = () => {
       image: [Dansljardin],
       width: 500,
       height: 330,
+      alt: "A Full-Stack App called Dans L'Jardin",
     },
     {
       name: "Crypto Coin App",
@@ -64,6 +66,7 @@ const Projects = () => {
       image: [CryptoCoin1, CryptoCoin2],
       width: 200,
       height: 540,
+      alt: "A React Native App That Tracks Coin Prices",
     },
     {
       name: "Builtspace",
@@ -72,6 +75,7 @@ const Projects = () => {
       image: [BuiltSpace],
       width: 420,
       height: 360,
+      alt: "A React App That Automates Tasks",
     },
   ];
 
@@ -81,94 +85,98 @@ const Projects = () => {
         <span className="text-gold">P</span>rojects
       </h3>
       {projectsInfo.map((project, index) => (
-        <div className="">
-          <div className="flex sm:flex-row flex-col items-center justify-center mt-20 lg:space-x-20 md:space-x-7 space-x-5">
-            {project.image.length == 1 ? (
-              <Image
-                src={project.image[0]}
-                width={
-                  width >= 1536
-                    ? 500
-                    : width >= 1280
-                    ? 420
-                    : width >= 768
-                    ? 320
-                    : width > 0 && 250
-                }
-                height={
-                  width >= 1536
-                    ? project.height
-                    : width >= 1280
-                    ? project.height - 30
-                    : width >= 768
-                    ? project.height - 40
-                    : width > 0 && project.height - 120
-                }
-                quality={30}
-                onClick={() => console.log(width)}
-              />
-            ) : (
-              // MORE THAN ONE PICTURE
-              <div className="flex-row flex">
-                <div className="mr-2">
-                  <Image
-                    src={project.image[0]}
-                    quality={30}
-                    width={
-                      width >= 1536
-                        ? 245
-                        : width >= 1280
-                        ? 205
-                        : width >= 768
-                        ? 155
-                        : width > 0 && 120
-                    }
-                    height={
-                      width >= 1536
-                        ? project.height
-                        : width >= 1280
-                        ? project.height - 120
-                        : width >= 768
-                        ? project.height - 150
-                        : width > 0 && project.height - 260
-                    }
-                  />
-                </div>
-                <div>
-                  <Image
-                    src={project.image[1]}
-                    quality={30}
-                    width={
-                      width >= 1536
-                        ? 245
-                        : width >= 1280
-                        ? 205
-                        : width >= 768
-                        ? 155
-                        : width > 0 && 120
-                    }
-                    height={
-                      width >= 1536
-                        ? project.height
-                        : width >= 1280
-                        ? project.height - 120
-                        : width >= 768
-                        ? project.height - 150
-                        : width > 0 && project.height - 260
-                    }
-                  />
-                </div>
+        <div
+          key={index}
+          className="flex sm:flex-row flex-col items-center justify-center mt-20 lg:space-x-20 md:space-x-7 space-x-5"
+        >
+          {project.image.length == 1 ? (
+            <Image
+              src={project.image[0]}
+              alt={project.alt}
+              width={
+                width >= 1536
+                  ? 500
+                  : width >= 1280
+                  ? 420
+                  : width >= 768
+                  ? 320
+                  : width > 0 && 250
+              }
+              height={
+                width >= 1536
+                  ? project.height
+                  : width >= 1280
+                  ? project.height - 30
+                  : width >= 768
+                  ? project.height - 40
+                  : width > 0 && project.height - 120
+              }
+              quality={30}
+              onClick={() => console.log(width)}
+            />
+          ) : (
+            // MORE THAN ONE PICTURE
+            <div className="flex-row flex">
+              <div className="mr-2">
+                <Image
+                  src={project.image[0]}
+                  quality={30}
+                  alt={project.alt}
+                  width={
+                    width >= 1536
+                      ? 245
+                      : width >= 1280
+                      ? 205
+                      : width >= 768
+                      ? 155
+                      : width > 0 && 120
+                  }
+                  height={
+                    width >= 1536
+                      ? project.height
+                      : width >= 1280
+                      ? project.height - 120
+                      : width >= 768
+                      ? project.height - 150
+                      : width > 0 && project.height - 260
+                  }
+                />
               </div>
-            )}
-            <div className="lg:w-1/3 sm:w-1/2 w-4/5 sm:mt-0 mt-10">
-              <h4 className="2xl:text-4xl xl:text-3xl text-2xl uppercase text-white font-bold sm:text-left text-center">
-                {project.name}
-              </h4>
-              <p className="2xl:text-xl xl:text-lg lg:text-md text-white mt-5 sm:text-left text-center">
-                {project.desc}
-              </p>
-              <BottomButtons />
+              <div>
+                <Image
+                  src={project.image[1]}
+                  quality={30}
+                  alt={project.alt}
+                  width={
+                    width >= 1536
+                      ? 245
+                      : width >= 1280
+                      ? 205
+                      : width >= 768
+                      ? 155
+                      : width > 0 && 120
+                  }
+                  height={
+                    width >= 1536
+                      ? project.height
+                      : width >= 1280
+                      ? project.height - 120
+                      : width >= 768
+                      ? project.height - 150
+                      : width > 0 && project.height - 260
+                  }
+                />
+              </div>
             </div>
+          )}
+          <div className="lg:w-1/3 sm:w-1/2 w-4/5 sm:mt-0 mt-10">
+            <h4 className="2xl:text-4xl xl:text-3xl text-2xl uppercase text-white font-bold sm:text-left text-center">
+              {project.name}
+            </h4>
+            <p className="2xl:text-xl xl:text-lg lg:text-md text-white mt-5 sm:text-left text-center">
+              {project.desc}
+            </p>
+            <BottomButtons />
           </div>
         </div>
       ))}
