@@ -81,27 +81,27 @@ const About = () => {
           technologies I enjoy playing basketball, hiking and spending quality
           time with family.
         </p>
-        <div className="flex flex-row flex-wrap justify-center lg:mt-20 sm:mt-12 mt-4 2xl:space-x-20 xl:space-x-18 lg:space-x-16 md:space-x-10 sm:space-x-6 space-x-3">
+        <div className="flex flex-row flex-wrap justify-center lg:mt-20 sm:mt-12 mt-4 2xl:space-x-20 xl:space-x-18 lg:space-x-16 md:space-x-10 sm:space-x-6 space-x-4">
           {skillsRow1.map((skill, index) => (
             <div key={index} className="relative">
               {ImageSizer(Circle, "circle", 110, 100, 90, 56)}
               <div className="absolute sm:left-6 sm:top-7 sm:pt-0 top-3 pt-0.5 left-3 pl-0.5">
                 {ImageSizer(skillsIcon[index], skill, 60, 50, 40, 30)}
               </div>
-              <p className="text-center xl:text-lg lg:text-base sm:text-sm text-xs sm:mt-1 -mt-0 uppercase font-semibold">
+              <p className="text-center xl:text-lg lg:text-base sm:text-sm text-xxs sm:mt-1 -mt-0 uppercase font-semibold">
                 {skill}
               </p>
             </div>
           ))}
         </div>
-        <div className="flex flex-row flex-wrap justify-center lg:mt-10 md:mt-8 sm:mt-6 mt-5 2xl:space-x-20 xl:space-x-18 lg:space-x-16 md:space-x-10 sm:space-x-6 space-x-3">
+        <div className="flex flex-row flex-wrap justify-center lg:mt-10 md:mt-8 sm:mt-6 mt-5 2xl:space-x-20 xl:space-x-18 lg:space-x-16 md:space-x-10 sm:space-x-6 space-x-4">
           {skillsRow2.map((skill, index) => (
             <div key={index} className="relative">
               {ImageSizer(Circle, "Circle", 110, 100, 90, 56)}
               <div className="absolute sm:left-6 sm:top-7 sm:pt-0 top-3 pt-0.5 left-3 pl-0.5">
                 {ImageSizer(skillsIcon[index + 5], skill, 60, 50, 40, 30)}
               </div>
-              <p className="text-center xl:text-lg lg:text-base sm:text-sm text-xs sm:mt-1 -mt-0 uppercase font-semibold">
+              <p className="text-center xl:text-lg lg:text-base sm:text-sm text-xxs sm:mt-1 -mt-0 uppercase font-semibold">
                 {skill}
               </p>
             </div>
