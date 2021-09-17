@@ -17,13 +17,18 @@ const Contact = () => {
         <a
           href="https://www.linkedin.com/in/harish-anantharajah/"
           target="_blank"
+          rel="noreferrer"
         >
           <IoLogoLinkedin size={45} color="rgb(37, 89, 119)" />
         </a>
-        <a href="https://github.com/harishanan" target="_blank">
+        <a
+          href="https://github.com/harishanan"
+          target="_blank"
+          rel="noreferrer"
+        >
           <IoLogoGithub size={45} color="rgb(37, 89, 119)" />
         </a>
-        <a href="mailto: aaronananh@gmail.com" target="_blank">
+        <a href="mailto: aaronananh@gmail.com" target="_blank" rel="noreferrer">
           <IoMailOutline size={45} color="rgb(37, 89, 119)" />
         </a>
       </div>

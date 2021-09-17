@@ -56,13 +56,13 @@ const Projects = () => {
   const BottomButtons = ({ demo, github }) => {
     return (
       <div className="flex flex-row sm:justify-start justify-center mt-6 xl:space-x-10 md:space-x-8 space-x-4">
-        <a href={demo} target="_blank">
+        <a href={demo} target="_blank" rel="noreferrer">
           <button className="hover:opacity-80 xl:w-40 md:w-36 sm:w-32 xl:h-12 md:h-10 sm:h-8 w-28 h-9 xl:text-lg lg:text-md md:text-sm text-xs bg-gold rounded-xl font-bold flex flex-row items-center justify-center uppercase">
             <IoEye size={width > 768 ? 24 : 20} className="mr-1" />
             Demo
           </button>
         </a>
-        <a href={github} target="_blank">
+        <a href={github} target="_blank" rel="noreferrer">
           <button className="hover:opacity-80 xl:w-40 md:w-36 sm:w-32 xl:h-12 md:h-10 sm:h-8 w-28 h-9 xl:text-lg lg:text-md md:text-sm text-xs rounded-xl font-bold flex flex-row items-center justify-center bg-white uppercase">
             <IoCodeSlash size={width > 768 ? 24 : 20} className="mr-1" />
             Code
