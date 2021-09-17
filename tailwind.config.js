@@ -10,6 +10,9 @@ module.exports = {
       fontFamily: {
         nunito: ["Nunito Sans", "sans-serif"],
       },
+      fontSize: {
+        xxs: ["0.50rem", "0.75rem"],
+      },
     },
   },
   variants: {

@@ -14,6 +14,25 @@ import NextJS from "../assets/next-js.svg";
 import AWSIcon from "../assets/aws-2.svg";
 import ReactNative from "../assets/react-native-1.svg";
 
+const ImageSizer = (img, alt, xl = 0, lg = 0, md = 0, sm = 0) => {
+  return (
+    <>
+      <div className="lg:block hidden">
+        <Image src={img} width={xl} height={xl} draggable={false} alt={alt} />
+      </div>
+      <div className="md:block lg:hidden hidden">
+        <Image src={img} width={lg} height={lg} draggable={false} alt={alt} />
+      </div>
+      <div className="sm:block md:hidden hidden">
+        <Image src={img} width={md} height={md} draggable={false} alt={alt} />
+      </div>
+      <div className="block sm:hidden">
+        <Image src={img} width={sm} height={sm} draggable={false} alt={alt} />
+      </div>
+    </>
+  );
+};
+
 const About = () => {
   const skillsIcon = [
     HTMLIcon,
@@ -65,71 +84,24 @@ const About = () => {
         <div className="flex flex-row flex-wrap justify-center lg:mt-20 sm:mt-12 mt-4 2xl:space-x-20 xl:space-x-18 lg:space-x-16 md:space-x-10 sm:space-x-6 space-x-3">
           {skillsRow1.map((skill, index) => (
             <div key={index} className="relative">
-              <Image
-                src={Circle}
-                width={
-                  width > 1024
-                    ? 110
-                    : width > 768
-                    ? 100
-                    : width > 639
-                    ? 90
-                    : width > 0 && 56
-                }
-                // width={width > 1024 ? 110 : 100}
-                draggable={false}
-                alt="cricle"
-              />
-              <div className="absolute xl:left-6 xl:top-9 lg:left-6 lg:top-9 md:top-10 sm:left-6 sm:top-12 top-12 left-3 pl-0.5">
-                <Image
-                  src={skillsIcon[index]}
-                  width={
-                    width > 1024 ? 60 : width > 768 ? 50 : width > 639 ? 40 : 30
-                  }
-                  height={
-                    width > 1024 ? 60 : width > 768 ? 50 : width > 639 ? 40 : 30
-                  }
-                  draggable={false}
-                  alt={skill}
-                />
+              {ImageSizer(Circle, "circle", 110, 100, 90, 56)}
+              <div className="absolute sm:left-6 sm:top-7 sm:pt-0 top-3 pt-0.5 left-3 pl-0.5">
+                {ImageSizer(skillsIcon[index], skill, 60, 50, 40, 30)}
               </div>
-              <p className="text-center xl:text-lg lg:text-base sm:text-sm text-xs sm:-mt-3 -mt-9 uppercase font-semibold">
+              <p className="text-center xl:text-lg lg:text-base sm:text-sm text-xs sm:mt-1 -mt-0 uppercase font-semibold">
                 {skill}
               </p>
             </div>
           ))}
         </div>
-        <div className="flex flex-row flex-wrap justify-center lg:mt-8 sm:mt-4 mt-0 2xl:space-x-20 xl:space-x-18 lg:space-x-16 md:space-x-10 sm:space-x-6 space-x-3">
+        <div className="flex flex-row flex-wrap justify-center lg:mt-10 md:mt-8 sm:mt-6 mt-5 2xl:space-x-20 xl:space-x-18 lg:space-x-16 md:space-x-10 sm:space-x-6 space-x-3">
           {skillsRow2.map((skill, index) => (
             <div key={index} className="relative">
-              <Image
-                src={Circle}
-                width={
-                  width > 1024
-                    ? 110
-                    : width > 768
-                    ? 100
-                    : width > 639
-                    ? 90
-                    : width > 0 && 56
-                }
-                draggable={false}
-                alt="cricle"
-              />
-              <div className="absolute xl:left-6 xl:top-9 lg:left-6 lg:top-9 md:top-10 sm:left-6 sm:top-12 top-12 left-3 pl-0.5">
-                <Image
-                  src={skillsIcon[index + 5]}
-                  width={
-                    width > 1024 ? 60 : width > 768 ? 50 : width > 639 ? 40 : 30
-                  }
-                  height={
-                    width > 1024 ? 60 : width > 768 ? 50 : width > 639 ? 40 : 30
-                  }
-                  draggable={false}
-                  alt={skill}
-                />
+              {ImageSizer(Circle, "Circle", 110, 100, 90, 56)}
+              <div className="absolute sm:left-6 sm:top-7 sm:pt-0 top-3 pt-0.5 left-3 pl-0.5">
+                {ImageSizer(skillsIcon[index + 5], skill, 60, 50, 40, 30)}
               </div>
-              <p className="text-center xl:text-lg lg:text-base sm:text-sm text-xs sm:-mt-3 -mt-9 uppercase font-semibold">
+              <p className="text-center xl:text-lg lg:text-base sm:text-sm text-xs sm:mt-1 -mt-0 uppercase font-semibold">
                 {skill}
               </p>
             </div>
