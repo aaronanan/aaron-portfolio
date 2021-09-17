@@ -1,15 +1,21 @@
 import React from "react";
-
+import { Link } from "react-scroll";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 
 const Navbar = () => {
-  const navItems = ["Home", "About Me", "Projects", "Contact"];
+  const navItems = [
+    { text: "Home", link: "home" },
+    { text: "About Me", link: "aboutme" },
+    { text: "Projects", link: "projects" },
+    { text: "Contact", link: "contact" },
+  ];
   return (
     <div className="flex flex-row justify-between text-xl py-5 uppercase lg:pt-10 md:pt-8 sm:pt-6 pt-4 items-center">
-      <div className="relative select-none cursor-pointer md:ml-0 ml-4">
+      <div className="relative select-none md:ml-0 ml-4">
         <h1
           className="lg:text-6xl text-5xl text-white relative z-50 font-bold"
           style={{ textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
+          // onClick={() => location.reload()}
         >
           AA
         </h1>
@@ -17,13 +23,18 @@ const Navbar = () => {
       </div>
       <div className="flex-row hidden md:flex items-center lg:space-x-10 space-x-5">
         {navItems.map((nav, index) => (
-          <a
+          <Link
             key={index}
-            className="text-white font-bold 2xl:text-xl xl:text-lg lg:text-base text-sm"
+            className="text-white font-bold 2xl:text-xl xl:text-lg lg:text-base text-sm border-b-2 hover:border-gold border-transparent"
             style={{ textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)" }}
+            activeClass="active"
+            to={nav.link}
+            spy={true}
+            smooth={true}
+            duration={500}
           >
-            {nav}
-          </a>
+            {nav.text}
+          </Link>
         ))}
         <input
           type="button"
@@ -36,6 +47,15 @@ const Navbar = () => {
             textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
           }}
         />
+        {/* <Link
+          activeClass="active"
+          to="aboutme"
+          spy={true}
+          smooth={true}
+          duration={500}
+        >
+          Test 1
+        </Link> */}
       </div>
       <div className="block md:hidden">
         <HiOutlineMenuAlt3 color="white" size={40} />

@@ -11,6 +11,34 @@ import Dansljardin from "../assets/dansljardin.png";
 //Icons
 import { IoCodeSlash, IoEye } from "react-icons/io5";
 
+const ImageSizer = (img, alt, xxlw, xlw, lgw, mdw, xxlh, xlh, lgh, mdh) => {
+  return (
+    <>
+      <div className="xl:block hidden">
+        <Image
+          src={img}
+          width={xxlw}
+          height={xxlh}
+          draggable={false}
+          alt={alt}
+        />
+      </div>
+      <div className="lg:block hidden xl:hidden">
+        <Image src={img} width={xlw} height={xlh} draggable={false} alt={alt} />
+      </div>
+      <div className="md:block lg:hidden hidden">
+        <Image src={img} width={lgw} height={lgh} draggable={false} alt={alt} />
+      </div>
+      <div className="sm:block md:hidden hidden">
+        <Image src={img} width={mdw} height={mdh} draggable={false} alt={alt} />
+      </div>
+      <div className="block sm:hidden">
+        <Image src={img} width={mdw} height={mdh} draggable={false} alt={alt} />
+      </div>
+    </>
+  );
+};
+
 const Projects = () => {
   const [width, setWidth] = useState(0);
 
@@ -25,17 +53,21 @@ const Projects = () => {
     setWidth(window.innerWidth);
   }, []);
 
-  const BottomButtons = () => {
+  const BottomButtons = ({ demo, github }) => {
     return (
       <div className="flex flex-row sm:justify-start justify-center mt-6 xl:space-x-10 md:space-x-8 space-x-4">
-        <button className="xl:w-40 md:w-36 sm:w-32 xl:h-12 md:h-10 sm:h-8 w-28 h-9 xl:text-lg lg:text-md md:text-sm text-xs bg-gold rounded-xl font-bold flex flex-row items-center justify-center uppercase">
-          <IoEye size={width > 768 ? 24 : 20} className="mr-1" />
-          Demo
-        </button>
-        <button className="xl:w-40 md:w-36 sm:w-32 xl:h-12 md:h-10 sm:h-8 w-28 h-9 xl:text-lg lg:text-md md:text-sm text-xs rounded-xl font-bold flex flex-row items-center justify-center bg-white uppercase">
-          <IoCodeSlash size={width > 768 ? 24 : 20} className="mr-1" />
-          Code
-        </button>
+        <a href={demo} target="_blank">
+          <button className="hover:opacity-80 xl:w-40 md:w-36 sm:w-32 xl:h-12 md:h-10 sm:h-8 w-28 h-9 xl:text-lg lg:text-md md:text-sm text-xs bg-gold rounded-xl font-bold flex flex-row items-center justify-center uppercase">
+            <IoEye size={width > 768 ? 24 : 20} className="mr-1" />
+            Demo
+          </button>
+        </a>
+        <a href={github} target="_blank">
+          <button className="hover:opacity-80 xl:w-40 md:w-36 sm:w-32 xl:h-12 md:h-10 sm:h-8 w-28 h-9 xl:text-lg lg:text-md md:text-sm text-xs rounded-xl font-bold flex flex-row items-center justify-center bg-white uppercase">
+            <IoCodeSlash size={width > 768 ? 24 : 20} className="mr-1" />
+            Code
+          </button>
+        </a>
       </div>
     );
   };
@@ -49,6 +81,8 @@ const Projects = () => {
       width: 300,
       height: width > 1280 ? 510 : width > 1024 ? 410 : 370,
       alt: "A Web App called Movie Cloud",
+      demo: "https://movie-cloud-app.netlify.app/",
+      github: "https://github.com/harishanan/movie-cloud",
     },
     {
       name: "Dans L'Jardin",
@@ -58,6 +92,8 @@ const Projects = () => {
       width: 500,
       height: 330,
       alt: "A Full-Stack App called Dans L'Jardin",
+      demo: "https://dansljardin.herokuapp.com/",
+      github: "https://github.com/harishanan/dansl-jardin",
     },
     {
       name: "Crypto Coin App",
@@ -67,6 +103,8 @@ const Projects = () => {
       width: 200,
       height: 540,
       alt: "A React Native App That Tracks Coin Prices",
+      demo: "https://github.com/harishanan/cryptocoin-native-app",
+      github: "https://github.com/harishanan/cryptocoin-native-app",
     },
     {
       name: "Builtspace",
@@ -76,11 +114,13 @@ const Projects = () => {
       width: 420,
       height: 360,
       alt: "A React App That Automates Tasks",
+      demo: "https://master.dltoyxtyfco24.amplifyapp.com/#/",
+      github: "https://github.com/harishanan/builtspace",
     },
   ];
 
   return (
-    <div className="bg-bgBlue pt-14">
+    <div className="bg-bgBlue pt-14" name="projects">
       <h3 className="lg:text-5xl md:text-4xl text-3xl text-center uppercase font-bold text-white">
         <span className="text-gold">P</span>rojects
       </h3>
@@ -90,30 +130,52 @@ const Projects = () => {
           className="flex sm:flex-row flex-col items-center justify-center mt-20 lg:space-x-20 md:space-x-7 space-x-5"
         >
           {project.image.length == 1 ? (
-            <Image
-              src={project.image[0]}
-              alt={project.alt}
-              width={
-                width >= 1536
-                  ? 500
-                  : width >= 1280
-                  ? 420
-                  : width >= 768
-                  ? 320
-                  : width > 0 && 250
-              }
-              height={
-                width >= 1536
-                  ? project.height
-                  : width >= 1280
-                  ? project.height - 30
-                  : width >= 768
-                  ? project.height - 40
-                  : width > 0 && project.height - 120
-              }
-              quality={30}
-              onClick={() => console.log(width)}
-            />
+            <>
+              {/* {ImageSizer(
+                project.image[0],
+                "Circle",
+                500,
+                420,
+                320,
+                250,
+                project.height,
+                project.height - 30,
+                project.height - 40,
+                project.height - 120
+              )} */}
+              <Image
+                src={project.image[0]}
+                alt={project.alt}
+                width={
+                  width >= 1536
+                    ? 500
+                    : width >= 1280
+                    ? 420
+                    : width >= 768
+                    ? 320
+                    : width > 0 && 250
+                }
+                height={
+                  width >= 1536
+                    ? project.height
+                    : width >= 1280
+                    ? project.height - 30
+                    : width >= 768
+                    ? project.height - 40
+                    : width > 0 && project.height - 120
+                }
+                quality={30}
+                onClick={() => console.log(width)}
+              />
+              {/* <Image
+                src={project.image[0]}
+                alt={project.alt}
+                width={500}
+                height={project.height}
+                quality={30}
+                className="transform 2xl:scale-100 xl:scale-90 lg:scale-75 md:scale-50 sm:scale-50"
+              /> */}
+            </>
           ) : (
             // MORE THAN ONE PICTURE
             <div className="flex-row flex">
@@ -176,7 +238,7 @@ const Projects = () => {
             <p className="2xl:text-xl xl:text-lg lg:text-md text-white mt-5 sm:text-left text-center">
               {project.desc}
             </p>
-            <BottomButtons />
+            <BottomButtons demo={project.demo} github={project.github} />
           </div>
         </div>
       ))}

@@ -22,7 +22,7 @@ const Footer = () => {
         viewBox="0 0 900 600"
         xmlns="http://www.w3.org/2000/svg"
         version="1.1"
-        className="w-full -mt-48"
+        className="w-full -mt-48 relative z-0"
         height={
           width > 1280 ? 600 : width > 768 ? 500 : width > 639 ? 400 : 300
         }

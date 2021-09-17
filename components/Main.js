@@ -10,7 +10,7 @@ import Aaron from "../assets/avataaars.svg";
 
 const Main = () => {
   return (
-    <div className="bg-bgBlue">
+    <div className="bg-bgBlue" name="home">
       <div className="2xl:mx-60 xl:mx-40 lg:mx-24 md:mx-12 mx-6">
         <Navbar />
         <div className="flex md:flex-row flex-col justify-between items-center py-20 mt-10">
@@ -50,6 +50,7 @@ const Main = () => {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 320"
         className="rotate-180 transform translate-y-1"
+        name="aboutme"
       >
         <path
           fill="white"
