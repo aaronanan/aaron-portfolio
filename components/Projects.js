@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 //Images
-import MovieCloud from "../assets/moviecloud.png";
-import BuiltSpace from "../assets/builtspace.png";
-import CryptoCoin1 from "../assets/cryptocoin.jpg";
-import CryptoCoin2 from "../assets/cryptocoin2.jpg";
-import Dansljardin from "../assets/dansljardin.png";
+import MovieCloud from "../assets/demos/moviecloud-min.png";
+import BuiltSpace from "../assets/demos/builtspace-min.png";
+import CryptoCoin1 from "../assets/demos/cryptocoin-min.png";
+import CryptoCoin2 from "../assets/demos/cryptocoin2-min.png";
+import Dansljardin from "../assets/demos/dansljardin-min.png";
 
 //Icons
 import { IoCodeSlash, IoEye } from "react-icons/io5";
@@ -20,20 +20,49 @@ const ImageSizer = (img, alt, xxlw, xlw, lgw, mdw, xxlh, xlh, lgh, mdh) => {
           width={xxlw}
           height={xxlh}
           draggable={false}
+          quality={30}
           alt={alt}
         />
       </div>
       <div className="lg:block hidden xl:hidden">
-        <Image src={img} width={xlw} height={xlh} draggable={false} alt={alt} />
+        <Image
+          src={img}
+          width={xlw}
+          height={xlh}
+          draggable={false}
+          alt={alt}
+          quality={30}
+        />
       </div>
       <div className="md:block lg:hidden hidden">
-        <Image src={img} width={lgw} height={lgh} draggable={false} alt={alt} />
+        <Image
+          src={img}
+          width={lgw}
+          height={lgh}
+          draggable={false}
+          alt={alt}
+          quality={30}
+        />
       </div>
       <div className="sm:block md:hidden hidden">
-        <Image src={img} width={mdw} height={mdh} draggable={false} alt={alt} />
+        <Image
+          src={img}
+          width={mdw}
+          height={mdh}
+          draggable={false}
+          alt={alt}
+          quality={30}
+        />
       </div>
       <div className="block sm:hidden">
-        <Image src={img} width={mdw} height={mdh} draggable={false} alt={alt} />
+        <Image
+          src={img}
+          width={mdw}
+          height={mdh}
+          draggable={false}
+          alt={alt}
+          quality={30}
+        />
       </div>
     </>
   );
@@ -55,7 +84,7 @@ const Projects = () => {
 
   const BottomButtons = ({ demo, github }) => {
     return (
-      <div className="flex flex-row sm:justify-start justify-center mt-6 xl:space-x-10 md:space-x-8 space-x-4">
+      <div className="flex flex-row md:justify-start justify-center mt-6 xl:space-x-10 md:space-x-8 space-x-4">
         <a href={demo} target="_blank" rel="noreferrer">
           <button className="hover:opacity-80 xl:w-40 md:w-36 sm:w-32 xl:h-12 md:h-10 sm:h-8 w-28 h-9 xl:text-lg lg:text-md md:text-sm text-xs bg-gold rounded-xl font-bold flex flex-row items-center justify-center uppercase">
             <IoEye size={width > 768 ? 24 : 20} className="mr-1" />
@@ -127,23 +156,31 @@ const Projects = () => {
       {projectsInfo.map((project, index) => (
         <div
           key={index}
-          className="flex sm:flex-row flex-col items-center justify-center mt-20 lg:space-x-20 md:space-x-7 space-x-5"
+          className="flex md:flex-row flex-col items-center justify-center mt-0"
         >
           {project.image.length == 1 ? (
             <>
-              {/* {ImageSizer(
+              {ImageSizer(
                 project.image[0],
-                "Circle",
+                project.alt,
+                //WIDTH
+                600,
+                450,
+                350,
+                300,
+                // HEIGHT
+                650,
                 500,
-                420,
-                320,
-                250,
-                project.height,
-                project.height - 30,
-                project.height - 40,
-                project.height - 120
-              )} */}
-              <Image
+                400,
+                350
+              )}
+              {/* <Image
+                src={Dansljardin}
+                alt={project.alt}
+                quality={30}
+                className="object-cover"
+              /> */}
+              {/* <Image
                 src={project.image[0]}
                 alt={project.alt}
                 width={
@@ -165,8 +202,7 @@ const Projects = () => {
                     : width > 0 && project.height - 120
                 }
                 quality={30}
-                onClick={() => console.log(width)}
-              />
+              /> */}
               {/* <Image
                 src={project.image[0]}
                 alt={project.alt}
@@ -178,9 +214,23 @@ const Projects = () => {
             </>
           ) : (
             // MORE THAN ONE PICTURE
-            <div className="flex-row flex">
-              <div className="mr-2">
-                <Image
+            <div className="flex-row flex md:mb-0 mb-20 md:mt-0 mt-16">
+              <div className="md:mr-2">
+                {ImageSizer(
+                  project.image[0],
+                  project.alt,
+                  //WIDTH
+                  300,
+                  225,
+                  175,
+                  150,
+                  // HEIGHT
+                  600,
+                  450,
+                  350,
+                  300
+                )}
+                {/* <Image
                   src={project.image[0]}
                   quality={30}
                   alt={project.alt}
@@ -202,10 +252,25 @@ const Projects = () => {
                       ? project.height - 150
                       : width > 0 && project.height - 260
                   }
-                />
+                /> */}
               </div>
+
               <div>
-                <Image
+                {ImageSizer(
+                  project.image[1],
+                  project.alt,
+                  //WIDTH
+                  300,
+                  225,
+                  175,
+                  150,
+                  // HEIGHT
+                  600,
+                  450,
+                  350,
+                  300
+                )}
+                {/* <Image
                   src={project.image[1]}
                   quality={30}
                   alt={project.alt}
@@ -227,15 +292,15 @@ const Projects = () => {
                       ? project.height - 150
                       : width > 0 && project.height - 260
                   }
-                />
+                /> */}
               </div>
             </div>
           )}
-          <div className="lg:w-1/3 sm:w-1/2 w-4/5 sm:mt-0 mt-10">
-            <h4 className="2xl:text-4xl xl:text-3xl text-2xl uppercase text-white font-bold sm:text-left text-center">
+          <div className="lg:w-1/3 sm:w-1/2 w-4/5 md:ml-10 -mt-10 md:mt-0">
+            <h4 className="2xl:text-4xl xl:text-3xl text-2xl uppercase text-white font-bold md:text-left text-center">
               {project.name}
             </h4>
-            <p className="2xl:text-xl xl:text-lg lg:text-md text-white mt-5 sm:text-left text-center">
+            <p className="2xl:text-xl xl:text-lg lg:text-md text-white mt-5 md:text-left text-center">
               {project.desc}
             </p>
             <BottomButtons demo={project.demo} github={project.github} />
@@ -245,7 +310,7 @@ const Projects = () => {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1440 321"
-        className="transform rotate-180 translate-y-1"
+        className="transform rotate-180 translate-y-1 md:mt-0 mt-20"
       >
         <path
           fill="white"

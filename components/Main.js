@@ -11,8 +11,9 @@ import Aaron from "../assets/avataaars.svg";
 const Main = () => {
   return (
     <div className="bg-bgBlue" name="home">
+      <Navbar />
+
       <div className="2xl:mx-60 xl:mx-40 lg:mx-24 md:mx-12 mx-6">
-        <Navbar />
         <div className="flex md:flex-row flex-col justify-between items-center py-20 mt-10">
           <div className="uppercase md:text-left text-center">
             <p className="lg:text-2xl text-xl text-gold font-medium">

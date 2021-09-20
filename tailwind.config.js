@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         bgBlue: "#255977",
+        bgBlueLight: "#31769e",
         gold: "#FEC576",
       },
       fontFamily: {
