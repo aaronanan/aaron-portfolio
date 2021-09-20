@@ -53,7 +53,7 @@ const Navbar = () => {
           />
         </div>
         <div className="block md:hidden z-50">
-          {toggleMenu ? (
+          {!toggleMenu ? (
             <HiOutlineMenuAlt3
               color="white"
               size={40}
@@ -68,7 +68,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
-      {!toggleMenu && (
+      {toggleMenu && (
         <div className="w-48 h-80 bg-bgBlueLight border-gold border-2 absolute right-0 top-0 z-0 md:hidden block">
           <div className="flex flex-col items-center space-y-5 mt-20">
             {navItems.map((nav, index) => (
